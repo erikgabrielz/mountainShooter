@@ -1,7 +1,7 @@
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.Const import WIN_WIDTH, COLOR_ORANGE, COLOR_WHITE, MENU_OPTION
+from code.Const import WIN_WIDTH, COLOR_ORANGE, COLOR_WHITE, COLOR_YELLOW, MENU_OPTION
 
 
 class Menu:
@@ -13,6 +13,7 @@ class Menu:
         self.rect = self.surf.get_rect(left = 0, top = 0)
 
     def run(self):
+        menu_option = 0
         # load music
         pygame.mixer_music.load('./asset/Menu.mp3')
         # play music
@@ -26,7 +27,10 @@ class Menu:
 
             #create optiton text
             for i in range(len(MENU_OPTION)):
-                self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
+                if i == menu_option:
+                    self.menu_text(20, MENU_OPTION[i], COLOR_YELLOW, ((WIN_WIDTH / 2), 200 + 25 * i))
+                else:
+                    self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
 
             # update display
             pygame.display.flip()
@@ -36,6 +40,23 @@ class Menu:
                 if event.type == pygame.QUIT:
                     pygame.quit()  # close Window
                     quit()  # end pygame
+
+                if event.type == pygame.KEYDOWN: #down key
+                    if event.key == pygame.K_DOWN:
+                        if menu_option < len(MENU_OPTION) - 1:
+                            menu_option += 1
+                        else:
+                            menu_option = 0
+
+                    if event.key == pygame.K_UP: #up key
+                        if menu_option > 0:
+                            menu_option -= 1
+                        else:
+                            menu_option = len(MENU_OPTION) - 1
+
+                    if event.key == pygame.K_RETURN: #enter
+                        return MENU_OPTION[menu_option]
+
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
