@@ -17,7 +17,11 @@ class Level:
         self.name = name
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
-        self.timeout = TIMEOUT_LEVEL
+
+        if self.name == "Level3":
+            self.timeout = TIMEOUT_LEVEL * 2
+        else:
+            self.timeout = TIMEOUT_LEVEL
         self.entity_list.extend(EntityFactory.get_entity(f'{self.name}Bg'))
 
         player = EntityFactory.get_entity('Player1')
@@ -57,11 +61,16 @@ class Level:
                     quit()  # end pygame
 
                 if event.type == EVENT_ENEMY:
-                    choice = random.choice(("Enemy1", "Enemy2"))
-                    self.entity_list.append(EntityFactory.get_entity(choice))
+                    if self.name == "Level3":
+                        self.entity_list.append(EntityFactory.get_entity("Enemy3"))
+                    else:
+                        choice = random.choice(("Enemy1", "Enemy2"))
+                        self.entity_list.append(EntityFactory.get_entity(choice))
+
 
                 if event.type == EVENT_TIMEOUT:
                     self.timeout -= TIMEOUT_STEP
+
                     if self.timeout == 0:
 
                         for ent in self.entity_list:
