@@ -12,6 +12,7 @@ from code.Player import Player
 
 
 class Level:
+
     def __init__(self, window: Surface, name: str, game_mode: str, player_score: list[int]):
         self.window = window
         self.name = name
