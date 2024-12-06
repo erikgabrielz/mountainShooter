@@ -32,6 +32,9 @@ class Menu:
                 else:
                     self.menu_text(20, MENU_OPTION[i], C_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
 
+            self.menu_text(14, "ALUNO: ERIK GABRIEL ZANOVELLO", C_WHITE, ( 90, 305))
+            self.menu_text(14, "RU: 4573354", C_WHITE, (33, 315))
+
             # update display
             pygame.display.flip()
 
