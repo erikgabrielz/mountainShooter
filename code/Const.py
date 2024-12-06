@@ -1,11 +1,12 @@
 import pygame
-
+#c
 C_ORANGE = (255, 128, 0)
 C_WHITE = (255, 255, 255)
 C_YELLOW = (246, 210, 38)
 C_GREEN = (0, 128, 0)
 C_CYAN = (0, 128, 128)
 
+#e
 ENTITY_DAMAGE = {
     'Level1Bg0': 0,
     'Level1Bg1': 0,
@@ -136,15 +137,14 @@ ENTITY_SHOT_DELAY = {
 
 EVENT_ENEMY = pygame.USEREVENT + 1
 EVENT_TIMEOUT = pygame.USEREVENT + 2
-}
 
-
+#m
 MENU_OPTION = ("NEW GAME 1P",
                "NEW GAME 2P - COOPERATIVE",
                "NEW GAME 2P - COMPETITIVE",
                "SCORE",
                "EXIT")
-
+#p
 PLAYER_KEY_UP = {'Player1': pygame.K_UP,
                  'Player2': pygame.K_w}
 PLAYER_KEY_DOWN = {'Player1': pygame.K_DOWN,
@@ -155,13 +155,14 @@ PLAYER_KEY_RIGHT = {'Player1': pygame.K_RIGHT,
                     'Player2': pygame.K_d}
 PLAYER_KEY_SHOOT = {'Player1': pygame.K_RCTRL,
                     'Player2': pygame.K_LCTRL}
-
+#s
 SPAWN_TIME = 4000
 
-
+#t
 TIMEOUT_LEVEL = 5000  # 20s
 TIMEOUT_STEP = 100  # 100ms
 
+#p
 PLAYER_KEY_UP = {'Player1': pygame.K_UP,
                  'Player2': pygame.K_w}
 PLAYER_KEY_DOWN = {'Player1': pygame.K_DOWN,
